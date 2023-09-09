@@ -44,7 +44,7 @@
     async function connectToPeer(sessionID) {
         console.log("Requesting ICE servers...");
         const iceServers = await fetch(
-            `https://viewer.dylanebert.com/ice-servers`,
+            `http://localhost:8000/ice-servers`,
             {
                 method: "GET",
                 headers: {
@@ -96,7 +96,7 @@
         console.log("Sending offer SDP: ", offer);
 
         const answer = await fetch(
-            `https://viewer.dylanebert.com/offer?session_id=${sessionID}`,
+            `http://localhost:8000/offer?session_id=${sessionID}`,
             {
                 method: "POST",
                 headers: {
@@ -121,7 +121,7 @@
         const json = JSON.stringify(candidate);
         console.log("Sending ICE candidate: ", json);
         await fetch(
-            `https://viewer.dylanebert.com/ice-candidate?session_id=${sessionID}`,
+            `http://localhost:8000/ice-candidate?session_id=${sessionID}`,
             {
                 method: "POST",
                 headers: {
